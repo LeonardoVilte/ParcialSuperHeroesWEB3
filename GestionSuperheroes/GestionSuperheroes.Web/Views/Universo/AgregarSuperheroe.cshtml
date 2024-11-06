@@ -1,0 +1,19 @@
+﻿@using GestionSuperheroes.Data.EF
+@model GestionSuperheroes.Data.EF.Superheroe
+
+
+<h1>Agregar SuperHeroe</h1>
+<form asp-action="AgregarSuperheroe">
+    <div class="form-group">
+        <label asp-for="NombreSuperheroe" class="control-label"></label>
+        <input asp-for="NombreSuperheroe" class="form-control" />
+        <span asp-validation-for="NombreSuperheroe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <partial name="/Views/Shared/_pvCombo.cshtml" />
+        <span asp-validation-for="IdUniverso" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Agregar" class="btn btn-primary" />
+    </div>
+</form>

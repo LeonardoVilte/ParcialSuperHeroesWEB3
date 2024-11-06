@@ -1,0 +1,41 @@
+﻿@using GestionSuperheroes;
+@using GestionSuperheroes.Data.EF
+@model List<GestionSuperheroes.Data.EF.Superheroe>;
+
+<h2>Lista de SuperHeroes</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "AgregarSuperheroe")
+</p>
+<div>@using (Html.BeginForm("Listar","Universo", FormMethod.Post))
+    {
+<partial name="/Views/Shared/_pvCombo.cshtml"/>
+<input type="submit" value="Filtrar" />
+    }
+</div>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NombreSuperheroe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().IdUniversoNavigation.NombreUniverso)
+        </th>
+    </tr>
+    @foreach (Superheroe superheroe in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => superheroe.NombreSuperheroe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => superheroe.IdUniversoNavigation.NombreUniverso)
+            </td>
+            <td>
+                <a href="/Universo/EliminarSuperheroe?idSuperheroe=@superheroe.IdSuperheroe&idUniverso=@ViewBag.IdUniversoSeleccionado">Eliminar</a>
+            </td>
+        </tr>
+    }
+</table>
+
